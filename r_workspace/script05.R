@@ -16,14 +16,15 @@ library(readxl)
 # KoNLP >> Text Mining을 위한 패키지 받는 법
 
 
-install.packages("rJava")
+
 # 현재 버전(4.0 이상) 에서는 바로 설치 불가능.. 따라서 github에서 받는방법으로
 install.packages("KoNLP")
 # 마찬가지..
 install.packages("multilinguer")
 
 
-
+# rJava다운로드
+install.packages("rJava")
 # 의존성 패키지들 다운로드
 install.packages(c("hash", "tau", "Sejong", "RSQLite", "devtools", "bit", "rex", "lazyeval", "htmlwidgets", "crosstalk", "promises", "later", "sessioninfo", "xopen", "bit64", "blob", "DBI", "memoise", "plogr", "covr", "DT", "rcmdcheck", "rversions"), type = "binary")
 
