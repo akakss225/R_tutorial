@@ -35,7 +35,7 @@ install.packages("remotes")
 remotes::install_github('haven-jeon/KoNLP', upgrade = "never", INSTALL_opts=c("--no-multiarch"))
 # 같은 방법으로 multilinguer도 깃헙으로 받기
 remotes::install_github("mrchypark/multilinguer")
-library("KoNLP")
+library(KoNLP)
 extractNoun('이 영화 정말 재미있다')
 
 useNIADic()
