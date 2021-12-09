@@ -3,6 +3,8 @@ library(rvest)
 url<-"https://tv.naver.com/jtbc.youth"
 html<-read_html(url,"UTF-8")
 
+# html_data 라는 변수를 만들어 html의 title이라는 class명을 갖는 태그 하위 a를 선택해
+# 그 내부 text만을 긁어와 dataframe으로 만드는 코드
 html_data<-html %>% html_nodes(".title a") %>% html_text() %>% data.frame()
 
 #################################################
@@ -17,7 +19,7 @@ data<-data.frame(title=html_data2,price=html_data3)
 #####################################################
 url<-"https://www.koreabaseball.com/Record/Player/HitterBasic/Basic1.aspx"
 html<-read_html(url,"UTF-8")
-data_name<-html %>% html_nodes(".tData01 tbody tr td:nth-child(2)") %>% html_text() 
+data_name<-html %>% html_nodes(".tData01 tbody tr td:nth-child(2)") %>% html_text()
 data_avg<-html %>% html_nodes(".tData01 tbody tr td:nth-child(4)") %>% html_text() 
 data2<-data.frame(name=data_name,avg=data_avg)
 library(ggplot2)
