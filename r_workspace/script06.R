@@ -76,27 +76,41 @@ install.packages("ggiraphExtra")
 
 install.packages("ggiraph")
 
-# 안되네요
+
 library(ggiraphExtra)
 
 library(tibble)
 
 install.packages("stringi")
 
+# 미국 주에 따른 범죄율 분석 >> 살인자 분석
+crime <- rownames_to_column(USArrests, var = "state")
+
+crime$state <- tolower(crime$state)
+
+states_map <- map_data("state")
+
+ggChoropleth(data = crime,
+             aes(fill = Murder,
+                 map_id = state),
+             map = states_map)
+
+
+# 한국 결핵 환자 분석
 devtools::install_github("cardiomoon/kormaps2014")
 
 library(kormaps2014)
 
-str(changeCode(korpop1))
+korpop1
+
 
 korpop1 <- rename(korpop1,
                   pop = 총인구_명,
                   name = 행정구역별_읍면동)
 
 
-str(changeCode(kormap1))
 
-ggChropleth(data = kormap1,
+ggChoropleth(data = kormap1,
             aes(fill = pop,
                 map_id = code,
                 tooltip = name),
@@ -145,13 +159,22 @@ t.test(data = mpg_diff2, cty ~ fl, var.equal = T)
 # 상관계수 : 두 변수가 얼마나 관련이 있는지 보여줌
 # 0에 가까울수록 관련없음. 1에 가까울수록 관련있음.
 # 양수이면 정비례, 음수이면 반비례 관계
+
 economics <- as.data.frame(ggplot2::economics)
+
 # 이 검증 또한 p-value값이 0.05보다 작아야 한다.
 # 아래의 자료의 경우 상관계수가 0.61이 나오므로, 애매한 상관관계를 갖음을 말한다.
 cor.test(economics$unemploy, economics$pce)
 
+# 상관 행렬 만들기
+car_cor <- cor(mtcars)
+round(car_cor, 2)
 
+install.packages("corrplot")
+library(corrplot)
 
+# 파란색은 정비례, 빨간색은 반비례를 나타냄
+corrplot(car_cor)
 
 
 
