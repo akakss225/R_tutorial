@@ -62,6 +62,9 @@ word_kim <- filter(word_kim, nchar(Var1) >= 2)
 top_20_kim <- word_kim %>% arrange(desc(Freq)) %>% head(20)
 top_20_kim
 
+# CSV 만들기
+write.csv(top_20_kim , "/Users/sumin/Desktop/R/R_tutorial/r_workspace/report.csv")
+
 # 워드카운트를 위한 패키지 다운 및 라이브러리 적용
 install.packages("wordcloud")
 library(RColorBrewer)
@@ -76,7 +79,7 @@ set.seed(1234)
 # 워드클라우드 실행, 상위 20개만 출력
 wordcloud(words = word_kim$Var1, # 단어
           freq = word_kim$Freq, # 빈도
-          min.freq = 7, # 최소 단어 빈도 조절 하면 나오는 단어수 바뀜
+          min.freq = 2, # 최소 단어 빈도 조절 하면 나오는 단어수 바뀜
           max.words = 200, # 표현 단어 수
           random.order = F, # 고빈도 단어 중앙 배치 여부
           rot.per = .1, # 회전 단어 비율
